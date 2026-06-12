@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { MULTIPLIERS } from '../data/products';
+import { MULTIPLIERS } from '../data/Products';
 
 /**
  * Cada item del carrito tiene la forma:

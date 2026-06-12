@@ -3,7 +3,7 @@ import DrawingPicker from './DrawingPicker';
 import PhraseInput from './PhraseInput';
 import CakeThumbnail from './CakeThumbnail';
 import CartImg from '../assets/cart.png';
-import { PORTION_OPTIONS, PRODUCTS } from '../data/products';
+import { PORTION_OPTIONS, PRODUCTS } from '../data/Products';
 
 const PHRASE_PRESETS = [
   { id: 'preset-1', label: 'Jodiendo desde ____', hasNumber: true },
