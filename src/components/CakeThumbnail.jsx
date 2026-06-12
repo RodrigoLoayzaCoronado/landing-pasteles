@@ -23,7 +23,7 @@ export default function CakeThumbnail({ drawing, phrase, size = 'md' }) {
 
   return (
     <div
-      className="relative rounded-full bg-[#b8e7f0] flex items-center justify-center overflow-hidden flex-shrink-0"
+      className="relative rounded-full bg-[#ffffff] flex items-center justify-center overflow-hidden flex-shrink-0"
       style={{ width: circle, height: circle }}
     >
       {drawing ? (

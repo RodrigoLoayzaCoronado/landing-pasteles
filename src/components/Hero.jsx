@@ -45,17 +45,17 @@ export default function Hero() {
             Tortas personalizadas, arma tu torta ideal o elige entre nuestros diseños. ¡Sorprende a tus seres queridos con un regalo dulce y divertido!
           </p>
           <div className="flex gap-2">
-            <button className="flex-1 bg-[#c0396b] text-white font-extrabold text-sm rounded-full py-3 transition-transform active:scale-[0.98]">
+            <button className="flex-1 bg-[#c0396b] text-white font-extrabold text-sm rounded-full py-3 transition-transform active:scale-[0.98] lg:flex-none lg:min-w-64" >
               Armar mi torta
             </button>
-            <button className="flex-1 border-2 border-[#1a1a2e] text-[#1a1a2e] font-bold text-sm rounded-full py-3 transition-transform active:scale-[0.98]">
+            <button className="flex-1 border-2 border-[#1a1a2e] text-[#1a1a2e] font-bold text-sm rounded-full py-3 transition-transform active:scale-[0.98] lg:flex-none lg:min-w-64">
               Catálogo
             </button>
           </div>
         </div>
 
         {/* Figura + lluvia */}
-        <div className="flex justify-center mt-4 relative px-5 lg:mt-0 lg:flex-shrink-0 lg:pb-2">
+        <div className="flex justify-center mt-4 relative px-5 lg:pb-4 lg:m-0 lg:flex-1">
           <MixturaLluvia isThrowing={isThrowing} />
           <motion.div
             animate={isThrowing ? {
@@ -65,7 +65,7 @@ export default function Hero() {
             } : {}}
             className="relative z-10"
           >
-            <FlorkFigure className="w-36 sm:w-48 lg:w-44 xl:w-52 max-w-full" />
+            <FlorkFigure className="w-36 sm:w-64 lg:w-120 xl:w-52 max-w-full" />
           </motion.div>
         </div>
       </div>
@@ -88,17 +88,6 @@ export default function Hero() {
           </div>
         ))}
       </div>
-
-      {/* Botón lluvia manual */}
-      <button
-        onClick={() => {
-          setIsThrowing(true);
-          setTimeout(() => setIsThrowing(false), 3000);
-        }}
-        className="absolute bottom-3 right-3 bg-[#5a2d8c] text-white text-xs px-3 py-1 rounded-full z-20 shadow-lg"
-      >
-        🎉 Lluvia
-      </button>
     </div>
   );
 }

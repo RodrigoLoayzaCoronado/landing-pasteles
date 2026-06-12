@@ -8,10 +8,11 @@
  *  - maxLength: number (default: 25)
  */
 
-const MAX = 25;
+const MAX = 35;
 
 export default function PhraseInput({ value, onChange, maxLength = MAX }) {
-  const remaining = maxLength - value.length;
+  const trimmedValue = value.trim();
+  const remaining = maxLength - trimmedValue.length;
   const isNearLimit = remaining <= 5;
   const isAtLimit   = remaining === 0;
 
@@ -41,7 +42,7 @@ export default function PhraseInput({ value, onChange, maxLength = MAX }) {
           isNearLimit ? 'text-[#c0396b]' : 'text-[#bbb]'
         }`}
       >
-        {value.length} / {maxLength}
+        {trimmedValue.length} / {maxLength}
       </div>
     </div>
   );

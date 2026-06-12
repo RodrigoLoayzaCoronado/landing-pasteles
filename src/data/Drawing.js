@@ -17,6 +17,7 @@ import img14 from '../assets/img14.png'
 import img15 from '../assets/img15.png'
 import img16 from '../assets/img16.png'
 import img17 from '../assets/img17.png'
+import img18 from '../assets/img18.png'
 
 export const DRAWINGS = [
   {
@@ -133,6 +134,11 @@ export const DRAWINGS = [
     emoji: '😠',
     img: img17,
   },
-
+  {
+    id: 'd18',
+    label: 'Matecito',
+    emoji: '🤔',
+    img: img18,
+  },
 
 ];
