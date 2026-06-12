@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PRODUCTS, PORTION_OPTIONS, MULTIPLIERS } from '../data/products';
+import { PRODUCTS, PORTION_OPTIONS, MULTIPLIERS } from '../data/Products';
 
 function ProductCard({ product, portions, filling, onChangePortions, onChangeFilling, onAddProduct }) {
   const price = (product.basePrice * MULTIPLIERS[portions]).toFixed(2);
