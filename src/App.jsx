@@ -13,8 +13,8 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false); 
 
-  function handleAddToCart(drawing, phrase, portions, filling) {
-    addItem(drawing, phrase, portions, filling);
+  function handleAddToCart(drawing, phrase, portions, filling, queque) {
+    addItem(drawing, phrase, portions, filling, queque);
     setTimeout(() => setCartOpen(true), 600);
   }
 

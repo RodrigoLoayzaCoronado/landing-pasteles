@@ -2,21 +2,26 @@ import torta from '../assets/torta.png';
 import torta1 from '../assets/torta1.png';
 import torta2 from '../assets/torta2.png';
 
-export const PORTION_OPTIONS = [2, 4, 6, 8];
+export const PORTION_OPTIONS = [4, 6, 8, 10, 15];
 
-export const MULTIPLIERS = { 2: 1, 4: 1.8, 6: 2.5, 8: 3.2 };
+export const MULTIPLIERS = { 4: 1, 6: 1.8, 8: 2.5, 10: 3.2, 15: 4 };
 
 export const PRODUCTS = [
   {
     id: 'p1',
-    title: 'Torta 3 leches',
+    title: 'Torta clasica',
     image: torta,
     basePrice: 20,
     accent: '#fde8f0',
     dot: '#f4a7c3',
+    queque: [
+      { id: 'vainilla',  label: 'Vainilla' },
+      { id: 'chocolate', label: 'Chocolate'},
+    ],
     fillings: [
-      { id: 'dulce',  label: 'Dulce de leche y crema' },
-      { id: 'frutos', label: 'Fresas con crema'        },
+      { id: 'dulce',  label: 'Dulce de leche' },
+      { id: 'frutos', label: 'Crema'},
+      { id: 'fresas', label: 'fresas' },
     ],
   },
   {
@@ -26,6 +31,10 @@ export const PRODUCTS = [
     basePrice: 24,
     accent: '#ede0f7',
     dot: '#b98ce8',
+    queque: [
+      { id: 'vainilla',  label: 'Vainilla' },
+      { id: 'chocolate', label: 'Chocolate'},
+    ],
     fillings: [
       { id: 'ganache', label: 'Ganache de chocolate'  },
       { id: 'oreo',    label: 'Crema de Oreo'         },
@@ -39,6 +48,10 @@ export const PRODUCTS = [
     basePrice: 26,
     accent: '#d9f5e8',
     dot: '#5ec491',
+    queque: [
+      { id: 'vainilla',  label: 'Vainilla' },
+      { id: 'chocolate', label: 'Chocolate'},
+    ],
     fillings: [
       { id: 'mango',  label: 'Mango y maracuyá'  },
       { id: 'fresas', label: 'Fresas con crema'  },

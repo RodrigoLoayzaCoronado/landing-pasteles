@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { PRODUCTS, PORTION_OPTIONS, MULTIPLIERS } from '../data/Products';
 
-function ProductCard({ product, portions, filling, onChangePortions, onChangeFilling, onAddProduct }) {
-  const price = (product.basePrice * MULTIPLIERS[portions]).toFixed(2);
+function ProductCard({ product, portions, filling, quequeLabel, onChangePortions, onChangeFilling, onAddProduct }) {
+  const multiplier = MULTIPLIERS[portions] || 1;
+  const price = (product.basePrice * multiplier).toFixed(2);
   const selectedFilling = product.fillings.find((f) => f.id === filling) ?? product.fillings[0];
 
   function handleBuy() {
     onAddProduct?.(product, portions, Number(price), {
       id: selectedFilling.id,
       label: selectedFilling.label,
+      quequeId: quequeLabel?.id || '',
+      quequeLabel: quequeLabel?.label || '',
     });
   }
 

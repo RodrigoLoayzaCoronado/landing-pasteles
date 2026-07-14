@@ -33,7 +33,8 @@ export default function CakeBuilder({ onAddToCart, cartCount, onOpenCart }) {
   const [phrase, setPhrase] = useState('');
   const [selectedPreset, setSelectedPreset] = useState(null);
   const [presetNumber, setPresetNumber] = useState('');
-  const [portions, setPortions] = useState(2);
+  const [portions, setPortions] = useState(null);
+  const [queque, setQueque] = useState(PRODUCTS[0].queque[0].id);
   const [filling, setFilling] = useState(PRODUCTS[0].fillings[0].id);
   const [added, setAdded] = useState(false);
 
@@ -65,13 +66,15 @@ export default function CakeBuilder({ onAddToCart, cartCount, onOpenCart }) {
     }
   }
 
-  const isReady = selectedDrawing !== null && phrase.trim().length > 0;
+  const isReady = selectedDrawing !== null && phrase.trim().length > 0 && PORTION_OPTIONS.includes(portions);
   const fillings = PRODUCTS[0].fillings;
+  const queques = PRODUCTS[0].queque;
 
   function handleAdd() {
     if (!isReady) return;
     const selectedFilling = fillings.find(f => f.id === filling) || fillings[0];
-    onAddToCart(selectedDrawing, phrase, portions, selectedFilling);
+    const selectedQueque = queques.find(q => q.id === queque) || queques[0];
+    onAddToCart(selectedDrawing, phrase, portions, selectedFilling, selectedQueque);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   }
@@ -182,11 +185,37 @@ export default function CakeBuilder({ onAddToCart, cartCount, onOpenCart }) {
             </div>
           </section>
 
-          {/* CTA */}
+          {/* Selector de queque */}
+          <div className="pb-3">
+            <p className="text-[10px] font-bold text-[#272727] uppercase tracking-widest mb-1.5">
+              Bizcocho
+            </p>
+            <div className="flex gap-1.5">
+              {PRODUCTS[0].queque.map((q) => (
+                <button
+                  key={q.id}
+                  onClick={() => setQueque(q.id)}
+                  title={q.label}
+                  className={`
+                    flex-1 flex flex-col items-center px-2 gap-0.5 py-1.5 rounded-xl text-[10px] font-bold
+                    border-2 transition-all duration-150 active:scale-95
+                    ${queque === q.id
+                      ? 'border-[#01eeff] bg-[#fff0f5] text-[#6264e0]'
+                      : 'border-[#f0f0f0] bg-[#fafafa] text-[#999] hover:border-[#f8dae7]'
+                    }
+                  `}
+                >
+                  <span className="text-center" style={{ fontSize: '12px' }}>
+                    {q.label}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="pt-2 pb-4">
             {/* Selector de relleno */}
             <div className="pb-3">
-              <p className="text-[10px] font-bold text-[#bbb] uppercase tracking-widest mb-1.5">
+              <p className="text-[10px] font-bold text-[#272727] uppercase tracking-widest mb-1.5">
                 Relleno
               </p>
               <div className="flex gap-1.5">
@@ -199,7 +228,7 @@ export default function CakeBuilder({ onAddToCart, cartCount, onOpenCart }) {
                       flex-1 flex flex-col items-center px-2 gap-0.5 py-1.5 rounded-xl text-[10px] font-bold
                       border-2 transition-all duration-150 active:scale-95
                       ${filling === f.id
-                        ? 'border-[#c0396b] bg-[#fff0f5] text-[#c0396b]'
+                        ? 'border-[#01eeff] bg-[#fff0f5] text-[#6264e0]'
                         : 'border-[#f0f0f0] bg-[#fafafa] text-[#999] hover:border-[#f8dae7]'
                       }
                     `}
@@ -259,7 +288,9 @@ export default function CakeBuilder({ onAddToCart, cartCount, onOpenCart }) {
               <p className="text-center text-[11px] text-[#bbb] font-bold mt-2">
                 {!selectedDrawing
                   ? 'Elige un dibujo y escribe tu frase'
-                  : 'Escribe tu frase para continuar'}
+                  : !PORTION_OPTIONS.includes(portions)
+                    ? 'Selecciona una porción para continuar'
+                    : 'Escribe tu frase para continuar'}
               </p>
             )}
           </div>

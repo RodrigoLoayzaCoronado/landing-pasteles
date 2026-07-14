@@ -24,6 +24,9 @@ export default function CartItem({ item, onRemove }) {
         {item.phrase && (
           <p className="text-xs font-bold text-[#c0396b] truncate mt-0.5">"{item.phrase}"</p>
         )}
+        {item.quequeLabel && (
+          <p className="text-xs text-[#888] font-bold mt-1">Queque: {item.quequeLabel}</p>
+        )}
         {item.fillingLabel && (
           <p className="text-xs text-[#888] font-bold mt-1">Relleno: {item.fillingLabel}</p>
         )}

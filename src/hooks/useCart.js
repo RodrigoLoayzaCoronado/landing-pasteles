@@ -35,7 +35,7 @@ const BASE_PRICE_PER_CAKE = 45;
 export function useCart() {
   const [items, setItems] = useState([]);
 
-  const addItem = useCallback((drawing, phrase, portions = 2, filling = {}) => {
+  const addItem = useCallback((drawing, phrase, portions = 2, filling = {}, queque) => {
     const price = (BASE_PRICE_PER_CAKE * MULTIPLIERS[portions]).toFixed(2);
     setItems(prev => [
       ...prev,
@@ -43,6 +43,8 @@ export function useCart() {
         cartId: Date.now(),
         drawing,
         phrase: phrase.trim(),
+        quequeId: queque?.id || '',
+        quequeLabel: queque?.label || '',
         portions,
         fillingId: filling.id || '',
         fillingLabel: filling.label || '',
